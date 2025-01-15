@@ -36,6 +36,7 @@
               ./extra-config.nix
               ./settings.nix
               ./plugins
+              ./autocmd.nix
             ];
           };
           pkgs = import inputs.nixpkgs {
