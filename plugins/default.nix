@@ -208,10 +208,16 @@
       enable = true;
       sources = {
         formatting = {
+          alejandra = {
+            enable = true;
+          };
           goimports.enable = true;
           gofmt.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
+          # sqlfluff.enable = true;
+          stylua.enable = true;
+          shfmt.enable = true;
         };
         diagnostics = {
           # buf.enable = true;
@@ -243,127 +249,6 @@
             replace = "gsr"; # -- Replace surrounding
             update_n_lines = "gsn"; # -- Update `n_lines`
           };
-        };
-      };
-    };
-    conform-nvim = {
-      enable = true;
-      settings = {
-        format_on_save = ''
-          function(bufnr)
-            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
-            end
-
-            if slow_format_filetypes[vim.bo[bufnr].filetype] then
-              return
-            end
-
-            local function on_format(err)
-              if err and err:match("timeout$") then
-                slow_format_filetypes[vim.bo[bufnr].filetype] = true
-              end
-            end
-
-            return { timeout_ms = 200, lsp_fallback = true }, on_format
-           end
-        '';
-
-        format_after_save = ''
-          function(bufnr)
-            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
-            end
-
-            if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-              return
-            end
-
-            return { lsp_fallback = true }
-          end
-        '';
-        formatters_by_ft = {
-          html = [
-            [
-              "prettierd"
-              "prettier"
-            ]
-          ];
-          css = [
-            [
-              "prettierd"
-              "prettier"
-            ]
-          ];
-          # go = ["gofmt" "goimports"];
-          typescript = [
-            [
-              "prettierd"
-              "prettier"
-            ]
-          ];
-          python = [
-            "black"
-            "isort"
-          ];
-          lua = ["stylua"];
-          nix = ["alejandra"];
-          markdown = [
-            [
-              "prettierd"
-              "prettier"
-            ]
-          ];
-          yaml = [
-            [
-              "prettierd"
-              "prettier"
-            ]
-          ];
-          terraform = ["terraform_fmt"];
-          bash = [
-            "shellcheck"
-            "shellharden"
-            "shfmt"
-          ];
-          json = ["jq"];
-          "_" = ["trim_whitespace"];
-        };
-        notify_on_error = true;
-        formatters = {
-          black = {
-            command = "${lib.getExe pkgs.black}";
-          };
-          isort = {
-            command = "${lib.getExe pkgs.isort}";
-          };
-          alejandra = {
-            command = "${lib.getExe pkgs.alejandra}";
-          };
-          jq = {
-            command = "${lib.getExe pkgs.jq}";
-          };
-          prettierd = {
-            command = "${lib.getExe pkgs.prettierd}";
-          };
-          stylua = {
-            command = "${lib.getExe pkgs.stylua}";
-          };
-          shellcheck = {
-            command = "${lib.getExe pkgs.shellcheck}";
-          };
-          shfmt = {
-            command = "${lib.getExe pkgs.shfmt}";
-          };
-          shellharden = {
-            command = "${lib.getExe pkgs.shellharden}";
-          };
-          goftm = {
-            comand = "${lib.getExe pkgs.gofumpt}";
-          };
-          #yamlfmt = {
-          #  command = "${lib.getExe pkgs.yamlfmt}";
-          #};
         };
       };
     };
@@ -1085,7 +970,7 @@
             connections = [
               {
                 driver = "postgresql";
-                dataSourceName = "host=127.0.0.1 port=5432 user=backend password=12345 dbname=backend sslmode=disable";
+                dataSourceName = "host=localhost port=5433 user=admin password=admin_password dbname=main_db sslmode=disable";
               }
             ];
           };
@@ -1139,7 +1024,7 @@
       };
       lintersByFt = {
         proto = ["buf_lint"];
-        nix = ["statix"];
+        # nix = ["statix"];
         lua = ["selene"];
         javascript = ["eslint_d"];
         javascriptreact = ["eslint_d"];
@@ -1210,38 +1095,35 @@
           texthl = "DapLogPoint";
         };
       };
-      extensions = {
-        # Creates a beautiful debugger UI
-        dap-ui = {
-          enable = true;
+    };
+    dap-go = {
+      enable = true;
+    };
+    dap-ui = {
+      enable = true;
 
-          # Set icons to characters that are more likely to work in every terminal.
-          # Feel free to remove or use ones that you like more! :)
-          # Don't feel like these are good choices.
-          icons = {
-            expanded = "▾";
-            collapsed = "▸";
-            current_frame = "*";
-          };
-
-          controls = {
-            icons = {
-              pause = "⏸";
-              play = "▶";
-              step_into = "⏎";
-              step_over = "⏭";
-              step_out = "⏮";
-              step_back = "b";
-              run_last = "▶▶";
-              terminate = "⏹";
-              disconnect = "⏏";
-            };
-          };
+      # Set icons to characters that are more likely to work in every terminal.
+      # Feel free to remove or use ones that you like more! :)
+      # Don't feel like these are good choices.
+      settings = {
+        icons = {
+          expanded = "▾";
+          collapsed = "▸";
+          current_frame = "*";
         };
 
-        # Add your own debuggers here
-        dap-go = {
-          enable = true;
+        controls = {
+          icons = {
+            pause = "⏸";
+            play = "▶";
+            step_into = "⏎";
+            step_over = "⏭";
+            step_out = "⏮";
+            step_back = "b";
+            run_last = "▶▶";
+            terminate = "⏹";
+            disconnect = "⏏";
+          };
         };
       };
     };
