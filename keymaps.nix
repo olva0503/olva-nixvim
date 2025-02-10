@@ -474,6 +474,40 @@
         desc = "Worktree create";
       };
     }
+    #LSP SAGA
+    {
+      mode = ["n" "v"];
+      key = "<leader>ca";
+      action = "<cmd>Lspsaga code_action<cr>";
+      options = {
+        desc = "LSP code action";
+      };
+    }
+    {
+      mode = ["n" "v"];
+      key = "<leader>rn";
+      action = "<cmd>Lspsaga rename<cr>";
+      options = {
+        desc = "LSP rename";
+      };
+    }
+    {
+      mode = "n";
+      key = "[d";
+      action = "<cmd>Lspsaga diagnostic_jump_next<cr>";
+      options = {
+        desc = "Next diagnostic";
+      };
+    }
+    {
+      mode = "n";
+      key = "]d";
+      action = "<cmd>Lspsaga diagnostic_jump_prev<cr>";
+      options = {
+        desc = "Previous diagnostic";
+      };
+    }
+    #LSP SAGA
   ];
   highlight.Todo = {
     fg = "Blue";

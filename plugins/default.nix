@@ -107,7 +107,7 @@
     };
     fidget = {
       #TODO do I really need it
-      enable = true;
+      enable = false;
       settings = {
         logger = {
           level = "warn"; # “off”, “error”, “warn”, “info”, “debug”, “trace”
@@ -215,7 +215,7 @@
           gofmt.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
-          # sqlfluff.enable = true;
+          sqlformat.enable = false;
           stylua.enable = true;
           shfmt.enable = true;
         };
@@ -775,28 +775,10 @@
       inlayHints = true;
       keymaps = {
         silent = true;
-        lspBuf = {
-          "<leader>rn" = {
-            action = "rename";
-            desc = "LSP: [R]e[n]ame";
-          };
-          "<leader>ca" = {
-            action = "code_action";
-            desc = "LSP: [C]ode [A]ction";
-          };
-        };
         diagnostic = {
           "<leader>cd" = {
             action = "open_float";
             desc = "Line Diagnostics";
-          };
-          "[d" = {
-            action = "goto_next";
-            desc = "Next Diagnostic";
-          };
-          "]d" = {
-            action = "goto_prev";
-            desc = "Previous Diagnostic";
           };
         };
         extra = [
@@ -913,6 +895,9 @@
       '';
 
       servers = {
+        taplo = {
+          enable = true;
+        };
         cucumber_language_server = {
           enable = true;
           package = null;
@@ -970,7 +955,7 @@
             connections = [
               {
                 driver = "postgresql";
-                dataSourceName = "host=localhost port=5433 user=admin password=admin_password dbname=main_db sslmode=disable";
+                dataSourceName = "host=localhost port=5432 user=admin password=admin_password dbname=main_db sslmode=disable";
               }
             ];
           };
@@ -1040,8 +1025,17 @@
     lsp-format = {
       #TODO consider using it
       enable = true;
+      lspServersToEnable = ["gopls" "yamlls" "taplo" "rust_analyzer" "jdtls" "ts_ls" "eslint"];
     };
     lsp-status.enable = true;
+    lspsaga = {
+      enable = true;
+      lightbulb = {
+        debounce = 500;
+        sign = false;
+      };
+      rename.autoSave = false;
+    };
     nvim-jdtls = {
       enable = true;
       data = "~/.cache/jdtls/workspace";
