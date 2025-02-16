@@ -41,7 +41,7 @@
     {
       mode = ["n" "t"];
       key = "<C-n>";
-      action = "<cmd>FloatermToggle<cr>";
+      action = "<cmd>Lspsaga term_toggle<cr>";
       options = {
         silent = true;
         desc = "Terminal";

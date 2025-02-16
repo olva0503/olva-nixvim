@@ -275,14 +275,6 @@
     leap = {
       enable = true;
     };
-    floaterm = {
-      enable = true;
-      settings = {
-        width = 0.8;
-        height = 0.8;
-        title = "ft";
-      };
-    };
     luasnip.enable = true;
     lspkind = {
       enable = true;
