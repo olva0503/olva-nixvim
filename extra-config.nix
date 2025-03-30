@@ -38,7 +38,6 @@
     # `neodev` configure Lua LSP for your Neovim config, runtime and plugins
     # used for completion, annotations, and signatures of Neovim apis
     neodev-nvim
-    flit-nvim
     dial-nvim
   ];
   extraConfigLuaPre =
