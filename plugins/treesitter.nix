@@ -68,5 +68,7 @@
         };
       };
     };
+
+    hmts.enable = true;
   };
 }

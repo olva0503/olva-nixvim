@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   imports = [
+    ./autocompletion.nix
     ./dap.nix
     ./lsp.nix
     ./lsp-misc.nix
     ./testing.nix
+    ./telescope.nix
     ./treesitter.nix
   ];
 
   plugins = {
-    web-devicons.enable = true;
-    markdown-preview.enable = true;
     barbar = {
       enable = true;
       keymaps = {
@@ -34,13 +34,8 @@
         auto_save = true;
       };
     };
-    lazygit.enable = true;
     noice.enable = true; # think do I really need it
-    fugitive.enable = true;
-    git-worktree = {
-      enable = true;
-      enableTelescope = true;
-    };
+
     codecompanion = {
       enable = true;
       settings = {
@@ -84,6 +79,7 @@
         };
       };
     };
+
     gitsigns = {
       enable = true;
       settings = {
@@ -109,6 +105,15 @@
         };
       };
     };
+    lazygit.enable = true;
+    fugitive.enable = true;
+    git-worktree = {
+      enable = true;
+      enableTelescope = true;
+    };
+
+    web-devicons.enable = true;
+    markdown-preview.enable = true;
 
     fidget = {
       #TODO do I really need it
@@ -209,28 +214,6 @@
       };
     };
 
-    none-ls = {
-      enable = true;
-      sources = {
-        formatting = {
-          alejandra = {
-            enable = true;
-          };
-          goimports.enable = true;
-          gofmt.enable = true;
-          htmlbeautifier.enable = true;
-          # buf.enable = true;
-          gofumpt.enable = true;
-          sqlformat.enable = false;
-          stylua.enable = true;
-          shfmt.enable = true;
-        };
-        diagnostics = {
-          # buf.enable = true;
-          # golangci_lint.enable = true;
-        };
-      };
-    };
     mini = {
       enable = true;
 
@@ -278,109 +261,11 @@
         };
       };
     };
-    leap = {
-      enable = true;
-    };
     indent-blankline = {
       enable = true;
     };
     # Inserts matching pairs of parens, brackets, etc.
-    nvim-autopairs = {
-      enable = true;
-      settings.fast_wrap.chars = [
-        "{"
-        "["
-        "("
-        "'"
-        "\""
-      ];
-    };
-    blink-cmp = {
-      enable = true;
-      settings = {
-        sources = {
-          default = [
-            "lsp"
-            "path"
-            "snippets"
-            "buffer"
-            "spell"
-            # "dictionary" #slowdowns
-          ];
 
-          providers = {
-            spell = {
-              module = "blink-cmp-spell";
-              name = "Spell";
-              score_offset = 10;
-              opts = {
-              };
-            };
-            dictionary = {
-              module = "blink-cmp-dictionary";
-              name = "Dict";
-              score_offset = 100;
-              min_keyword_length = 3;
-              # Optional configurations
-              opts = {
-              };
-            };
-          };
-        };
-        keymap = {
-          "<C-b>" = [
-            "scroll_documentation_up"
-            "fallback"
-          ];
-          "<C-e>" = [
-            "hide"
-          ];
-          "<C-f>" = [
-            "scroll_documentation_down"
-            "fallback"
-          ];
-          "<Tab>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<S-Tab>" = [
-            "select_prev"
-            "fallback"
-          ];
-          "<Down>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<Up>" = [
-            "select_prev"
-            "fallback"
-          ];
-          "<C-space>" = [
-            "show"
-            "show_documentation"
-            "hide_documentation"
-          ];
-          "<Enter>" = [
-            "select_and_accept"
-            "fallback"
-          ];
-          "<C-p>" = [
-            "snippet_backward"
-            "fallback"
-          ];
-          "<C-n>" = [
-            "snippet_forward"
-            "fallback"
-          ];
-        };
-      };
-    };
-    blink-cmp-spell.enable = true;
-    # blink-cmp-dictionary.enable = true;
-    wilder = {
-      enable = true;
-      modes = [":" "/" "?"];
-    };
     oil = {
       enable = true;
       settings = {
@@ -402,211 +287,6 @@
         win_opts = {
         };
         skip_confirm_for_simple_edits = true;
-      };
-    };
-    telescope = {
-      enable = true;
-      extensions = {
-        file-browser = {
-          enable = true;
-        };
-        fzf-native = {
-          enable = true;
-        };
-        ui-select = {
-          settings = {
-            specific_opts = {
-              codeactions = true;
-            };
-          };
-        };
-        undo = {
-          enable = true;
-        };
-      };
-      settings = {
-        defaults = {
-          layout_config = {
-            horizontal = {
-              prompt_position = "top";
-            };
-          };
-          sorting_strategy = "ascending";
-        };
-        pickers = {
-          colorscheme = {
-            enable_preview = true;
-          };
-          live_grep = {
-            additional_args = ''
-              function(_)
-                return { "--hidden" }
-               end
-            '';
-          };
-        };
-      };
-      keymaps = {
-        "<leader>sh" = {
-          mode = "n";
-          action = "help_tags";
-          options = {
-            desc = "[S]earch [H]elp";
-          };
-        };
-        "<leader>sk" = {
-          mode = "n";
-          action = "keymaps";
-          options = {
-            desc = "[S]earch [K]eymaps";
-          };
-        };
-        "<leader>ss" = {
-          mode = "n";
-          action = "builtin";
-          options = {
-            desc = "[S]earch [S]elect Telescope";
-          };
-        };
-        "<leader>sw" = {
-          mode = "n";
-          action = "grep_string";
-          options = {
-            desc = "[S]earch current [W]ord";
-          };
-        };
-        "<leader>sg" = {
-          mode = "n";
-          action = "live_grep";
-          options = {
-            desc = "[S]earch by [G]rep";
-          };
-        };
-        "<leader>sd" = {
-          mode = "n";
-          action = "diagnostics";
-          options = {
-            desc = "[S]earch [D]iagnostics";
-          };
-        };
-        "<leader>sr" = {
-          mode = "n";
-          action = "resume";
-          options = {
-            desc = "[S]earch [ ]esume";
-          };
-        };
-        "<leader>sf" = {
-          mode = "n";
-          action = "oldfiles";
-          options = {
-            desc = "[S]earch Recent Files ('.' for repeat)";
-          };
-        };
-        "<leader><leader>" = {
-          mode = "n";
-          action = "buffers";
-          options = {
-            desc = "[ ] Find existing buffers";
-          };
-        };
-        "<leader>:" = {
-          action = "command_history";
-          options = {
-            desc = "Command History";
-          };
-        };
-        "<leader>b" = {
-          action = "buffers";
-          options = {
-            desc = "+buffer";
-          };
-        };
-        "<leader>ff" = {
-          action = "find_files";
-          options = {
-            desc = "Find project files";
-          };
-        };
-        "<C-p>" = {
-          action = "git_files";
-          options = {
-            desc = "Search git files";
-          };
-        };
-        "<leader>gc" = {
-          action = "git_commits";
-          options = {
-            desc = "Commits";
-          };
-        };
-        "<leader>gs" = {
-          action = "git_status";
-          options = {
-            desc = "Status";
-          };
-        };
-        "<leader>sa" = {
-          action = "autocommands";
-          options = {
-            desc = "Auto Commands";
-          };
-        };
-        "<leader>sb" = {
-          action = "current_buffer_fuzzy_find";
-          options = {
-            desc = "Buffer";
-          };
-        };
-        "<leader>sC" = {
-          action = "commands";
-          options = {
-            desc = "Commands";
-          };
-        };
-        "<leader>sD" = {
-          action = "diagnostics";
-          options = {
-            desc = "Workspace diagnostics";
-          };
-        };
-        "<leader>sH" = {
-          action = "highlights";
-          options = {
-            desc = "Search Highlight Groups";
-          };
-        };
-
-        "<leader>sM" = {
-          action = "man_pages";
-          options = {
-            desc = "Man pages";
-          };
-        };
-        "<leader>sm" = {
-          action = "marks";
-          options = {
-            desc = "Jump to Mark";
-          };
-        };
-        "<leader>so" = {
-          action = "vim_options";
-          options = {
-            desc = "Options";
-          };
-        };
-        "<leader>sR" = {
-          action = "resume";
-          options = {
-            desc = "Resume";
-          };
-        };
-        "<leader>uC" = {
-          action = "colorscheme";
-          options = {
-            desc = "Colorscheme preview";
-          };
-        };
       };
     };
     lightline = {
@@ -648,15 +328,13 @@
     flit = {
       enable = true;
       settings = {
-        keys = {
-          F = "F";
-          T = "T";
-          f = "f";
-          t = "t";
-        };
         labeled_modes = "nv";
         multiline = true;
       };
+    };
+
+    leap = {
+      enable = true;
     };
 
     which-key = {
@@ -689,7 +367,6 @@
       enable = true;
       enableTelescope = true;
     };
-    hmts.enable = true;
 
     lint = {
       #TODO consoder using it
@@ -713,6 +390,28 @@
         go = [
           "golangcilint"
         ];
+      };
+    };
+    none-ls = {
+      enable = true;
+      sources = {
+        formatting = {
+          alejandra = {
+            enable = true;
+          };
+          goimports.enable = true;
+          gofmt.enable = true;
+          htmlbeautifier.enable = true;
+          # buf.enable = true;
+          gofumpt.enable = true;
+          sqlformat.enable = false;
+          stylua.enable = true;
+          shfmt.enable = true;
+        };
+        diagnostics = {
+          # buf.enable = true;
+          # golangci_lint.enable = true;
+        };
       };
     };
   };
