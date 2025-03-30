@@ -213,6 +213,7 @@
           };
           goimports.enable = true;
           gofmt.enable = true;
+          htmlbeautifier.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
           sqlformat.enable = false;
@@ -697,6 +698,12 @@
       enable = true;
       settings = {
         handle_leading_whitespace = true;
+        settings.strip_wrapping_quote_characters = [
+          "'"
+          "\""
+          "`"
+          "#"
+        ];
       };
     };
     treesitter-context.enable = true;
@@ -897,9 +904,9 @@
         nixd.enable = true;
         # nil-ls = {enable = true;};
         jsonls.enable = true;
+        superhtml.enable = true;
         gopls = {
           enable = true;
-
           settings = {
             gopls = {
               gofumpt = true;
@@ -936,6 +943,7 @@
           };
         };
         # bufls.enable = true;
+
         rust_analyzer = {
           enable = true;
           installCargo = true;
@@ -952,6 +960,7 @@
             ];
           };
         };
+
         ts_ls = {
           enable = true;
           filetypes = ["javascript" "javascriptreact" "typescript" "typescriptreact"];
@@ -1017,7 +1026,7 @@
     lsp-format = {
       #TODO consider using it
       enable = true;
-      lspServersToEnable = ["gopls" "yamlls" "taplo" "rust_analyzer" "jdtls" "ts_ls" "eslint"];
+      lspServersToEnable = ["gopls" "yamlls" "taplo" "rust_analyzer" "jdtls" "ts_ls" "eslint" "superhtml"];
     };
     lsp-status.enable = true;
     lspsaga = {
@@ -1044,7 +1053,13 @@
           };
         };
         # java.enable = true;
-        rust.enable = true;
+        rust = {
+          enable = true;
+          settings = {
+            dap_adapter = "lldb";
+            args = ["--no-capture"];
+          };
+        };
         scala.enable = true;
         zig.enable = true;
       };
@@ -1084,6 +1099,12 @@
     };
     dap-go = {
       enable = true;
+    };
+    dap-lldb = {
+      enable = true;
+      settings = {
+        codelldb_path = null;
+      };
     };
     dap-ui = {
       enable = true;
