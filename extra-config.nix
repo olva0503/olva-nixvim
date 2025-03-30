@@ -24,22 +24,12 @@
     vim.keymap.set("v", "g<C-x>", function()
         require("dial.map").manipulate("decrement", "gvisual")
     end)
-    require('cmp').event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
+
     require('dap').listeners.after.event_initialized['dapui_config'] = require('dapui').open
     require('dap').listeners.before.event_terminated['dapui_config'] = require('dapui').close
     require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
-    require('flit').setup {
-    keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-    -- A string like "nv", "nvo", "o", etc.
-    labeled_modes = "v",
-    -- Repeat with the trigger key itself.
-    clever_repeat = true,
-    multiline = true,
-    -- Like `leap`s similar argument (call-specific overrides).
-    -- E.g.: opts = { equivalence_classes = {} }
-    opts = {}
-    }
+
     require'lspconfig'.protols.setup{}
 
   '';
@@ -54,7 +44,6 @@
   extraConfigLuaPre =
     # lua
     ''
-      local slow_format_filetypes = {}
 
       vim.api.nvim_create_user_command("FormatDisable", function(args)
          if args.bang then
@@ -86,6 +75,5 @@
         bang = true,
       })
 
-      -- require('neodev').setup {}
     '';
 }

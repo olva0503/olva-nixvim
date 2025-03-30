@@ -105,6 +105,7 @@
         };
       };
     };
+
     fidget = {
       #TODO do I really need it
       enable = false;
@@ -118,14 +119,13 @@
           suppress_on_insert = true; # Suppress new messages while in insert mode
           ignore_done_already = false; # Ignore new tasks that are already complete
           ignore_empty_message = false; # Ignore new tasks that don't contain a message
-          clear_on_detach.__raw =
-            # Clear notification group when LSP server detaches
-            ''
-              function(client_id)
-                local client = vim.lsp.get_client_by_id(client_id)
-                return client and client.name or nil
-              end
-            '';
+          clear_on_detach.__raw = ''
+            function(client_id)
+              local client = vim.lsp.get_client_by_id(client_id)
+              return client and client.name or nil
+            end
+          '';
+
           notification_group.__raw =
             # How to get a progress message's notification group key
             ''
@@ -204,6 +204,7 @@
         };
       };
     };
+
     none-ls = {
       enable = true;
       sources = {
@@ -276,24 +277,6 @@
     leap = {
       enable = true;
     };
-    luasnip.enable = true;
-    lspkind = {
-      enable = true;
-
-      cmp = {
-        enable = true;
-        menu = {
-          nvim_lsp = "[LSP]";
-          nvim_lua = "[api]";
-          path = "[path]";
-          luasnip = "[snip]";
-          buffer = "[buffer]";
-          neorg = "[neorg]";
-          cmp_tabby = "[Tabby]";
-        };
-      };
-    };
-    cmp-nvim-lsp.enable = true;
     indent-blankline = {
       enable = true;
     };
@@ -308,88 +291,88 @@
         "\""
       ];
     };
-    cmp = {
+    blink-cmp = {
       enable = true;
-
       settings = {
-        snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
-        completion = {
-          completeopt = "menu,menuone,noinsert";
-        };
-        experimental = {ghost_text = true;};
-        performance = {
-          debounce = 60;
-          fetchingTimeout = 200;
-          maxViewEntries = 30;
-        };
-        mapping = {
-          # Select the [n]ext item
-          "<Tab>" = "cmp.mapping.select_next_item()";
-          # Select the [p]revious item
-          "<S-Tab>" = "cmp.mapping.select_prev_item()";
-          # Scroll the documentation window [b]ack / [f]orward
-          "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          # Accept ([y]es) the completion.
-          #  This will auto-import if your LSP supports it.
-          #  This will expand snippets if the LSP sent a snippet.
-          "<C-y>" = "cmp.mapping.confirm { select = true }";
-          # If you prefer more traditional completion keymaps,
-          # you can uncomment the following lines.
-          # "<CR>" = "cmp.mapping.confirm { select = true }";
-          # "<Tab>" = "cmp.mapping.select_next_item()";
-          # "<S-Tab>" = "cmp.mapping.select_prev_item()";
+        sources = {
+          default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+            "spell"
+            # "dictionary" #slowdowns
+          ];
 
-          # Think of <c-l> as moving to the right of your snippet expansion.
-          #  So if you have a snippet that's like:
-          #  function $name($args)
-          #    $body
-          #  end
-          #
-          # <c-l> will move you to the right of the expansion locations.
-          # <c-h> is similar, except moving you backwards.
-          "<C-l>" = ''
-            cmp.mapping(function()
-              if luasnip.expand_or_locally_jumpable() then
-                luasnip.expand_or_jump()
-              end
-            end, { 'i', 's' })
-          '';
-          "<C-h>" = ''
-            cmp.mapping(function()
-              if luasnip.locally_jumpable(-1) then
-                luasnip.jump(-1)
-              end
-            end, { 'i', 's' })
-          '';
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          providers = {
+            spell = {
+              module = "blink-cmp-spell";
+              name = "Spell";
+              score_offset = 10;
+              opts = {
+              };
+            };
+            dictionary = {
+              module = "blink-cmp-dictionary";
+              name = "Dict";
+              score_offset = 100;
+              min_keyword_length = 3;
+              # Optional configurations
+              opts = {
+              };
+            };
+          };
         };
-
-        sources = [
-          {name = "path";}
-          {name = "nvim_lsp";}
-          {name = "cmp_tabby";}
-          {
-            name = "luasnip"; # snippets
-          }
-          {
-            name = "buffer";
-            # Words from other open buffers can also be suggested.
-            option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
-          }
-          {name = "neorg";}
-        ];
-
-        window = {
-          completion = {border = "solid";};
-          documentation = {border = "solid";};
+        keymap = {
+          "<C-b>" = [
+            "scroll_documentation_up"
+            "fallback"
+          ];
+          "<C-e>" = [
+            "hide"
+          ];
+          "<C-f>" = [
+            "scroll_documentation_down"
+            "fallback"
+          ];
+          "<Tab>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<Down>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<Up>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<C-space>" = [
+            "show"
+            "show_documentation"
+            "hide_documentation"
+          ];
+          "<Enter>" = [
+            "select_and_accept"
+            "fallback"
+          ];
+          "<C-p>" = [
+            "snippet_backward"
+            "fallback"
+          ];
+          "<C-n>" = [
+            "snippet_forward"
+            "fallback"
+          ];
         };
       };
     };
-    cmp-spell = {
-      enable = true;
-    };
-    #
+    blink-cmp-spell.enable = true;
+    # blink-cmp-dictionary.enable = true;
     wilder = {
       enable = true;
       modes = [":" "/" "?"];
@@ -655,6 +638,20 @@
         component_function = {
           gitbranch = "FugitiveHead";
         };
+      };
+    };
+
+    flit = {
+      enable = true;
+      settings = {
+        keys = {
+          F = "F";
+          T = "T";
+          f = "f";
+          t = "t";
+        };
+        labeled_modes = "nv";
+        multiline = true;
       };
     };
 
@@ -993,6 +990,7 @@
         };
         eslint.enable = true;
         zls.enable = true;
+        lua_ls.enable = false;
         metals.enable = true;
         terraformls.enable = true;
         pyright.enable = true;
