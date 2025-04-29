@@ -231,9 +231,9 @@
         yamlls.enable = true;
       };
     };
-    nvim-jdtls = {
+    jdtls = {
       enable = true;
-      data = "~/.cache/jdtls/workspace";
+      # data = "~/.cache/jdtls/workspace";        Please, directly add the necessary `"-data"` flag and its argument to `plugins.jdtls.settings.cmd`
     };
 
     otter = {
