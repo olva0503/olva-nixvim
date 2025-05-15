@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   plugins = {
+    rustaceanvim.enable = true;
     lsp = {
       enable = true;
       inlayHints = true;
@@ -175,11 +176,11 @@
         };
         # bufls.enable = true;
 
-        rust_analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
-        };
+        # rust_analyzer = {
+        #   enable = true;
+        #   installCargo = true;
+        #   installRustc = true;
+        # };
         sqls = {
           enable = true;
           settings = {
