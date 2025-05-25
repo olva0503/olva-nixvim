@@ -2,7 +2,9 @@
   plugins = {
     lsp-format = {
       enable = true;
-      lspServersToEnable = ["gopls" "yamlls" "taplo" "rust_analyzer" "jdtls" "ts_ls" "eslint" "superhtml"];
+      # sql = {
+      #   exclude = ["sqls"];
+      # };
     };
     lsp-status.enable = true; #TODO consider using it
     lspsaga = {

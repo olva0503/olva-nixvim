@@ -34,7 +34,7 @@
         auto_save = true;
       };
     };
-    noice.enable = true; # think do I really need it
+    noice.enable = false; # think do I really need it
 
     codecompanion = {
       enable = true;
@@ -388,7 +388,7 @@
           htmlbeautifier.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
-          sqlformat.enable = false;
+          sqlfluff.enable = true;
           stylua.enable = true;
           shfmt.enable = true;
         };

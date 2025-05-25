@@ -10,22 +10,26 @@
             "snippets"
             "buffer"
             "spell"
-            # "dictionary" #slowdowns
+            # Make it too slow
+            # "dictionary"
           ];
 
           providers = {
+            lsp = {
+              score_offset = 100;
+            };
             spell = {
               module = "blink-cmp-spell";
               name = "Spell";
-              score_offset = 10;
+              score_offset = -10;
               opts = {
               };
             };
             dictionary = {
               module = "blink-cmp-dictionary";
               name = "Dict";
-              score_offset = 100;
-              min_keyword_length = 3;
+              score_offset = -15;
+              min_keyword_length = 4;
               # Optional configurations
               opts = {
               };
@@ -82,7 +86,7 @@
     };
 
     blink-cmp-spell.enable = true;
-    # blink-cmp-dictionary.enable = true;
+    blink-cmp-dictionary.enable = true;
 
     nvim-autopairs = {
       enable = true;

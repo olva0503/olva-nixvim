@@ -3,7 +3,7 @@
     rustaceanvim.enable = true;
     lsp = {
       enable = true;
-      inlayHints = true;
+      inlayHints = false;
       keymaps = {
         silent = true;
         diagnostic = {
