@@ -45,5 +45,24 @@
           };
         };
       };
+      flake = {
+        lib.makeNixvimWithExtra = system: extraConfig:
+          inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+            module = {
+              imports = [
+                ./keymaps.nix
+                ./extra-config.nix
+                ./settings.nix
+                ./plugins
+                ./autocmd.nix
+                extraConfig
+              ];
+            };
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
+      };
     };
 }
