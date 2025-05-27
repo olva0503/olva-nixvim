@@ -50,12 +50,12 @@
           inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
             module = {
               imports = [
+                extraConfig
                 ./keymaps.nix
                 ./extra-config.nix
                 ./settings.nix
                 ./plugins
                 ./autocmd.nix
-                extraConfig
               ];
             };
             pkgs = import inputs.nixpkgs {

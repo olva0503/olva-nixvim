@@ -410,25 +410,6 @@
         silent = true;
       };
     }
-    {
-      mode = "n";
-      key = "<leader>tb";
-      action.__raw = ''
-        function()
-         require('dap').run({
-           type = "go",
-           name = "TestAllSuites",
-           request = "launch",
-           mode = "test",
-           program = "./tests",
-           args = { "-test.run", "TestAllSuites", "-godog.tags", "@wip"},
-         })
-         end
-      '';
-      options = {
-        desc = "Debug bdd test";
-      };
-    }
     ### GIT signs
     {
       mode = "n";
