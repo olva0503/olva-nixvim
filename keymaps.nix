@@ -6,7 +6,7 @@
       action = "$";
     }
     {
-      mode = ["n"];
+      mode = ["n" "v"];
       key = "H";
       action = "^";
     }
@@ -435,27 +435,13 @@
         desc = "Preview hunk";
       };
     }
+    #TODO potentail for removal
     {
       mode = "n";
       key = "<leader>hdt";
       action = "<cmd>Gvdiffsplit!<cr>";
       options = {
         desc = "Diff this";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>glh";
-      action.__raw = ''
-        function()
-           local file = vim.fn.expand('%:p')
-           local line = vim.fn.line('.')
-           local cmd = string.format('Git log -L %d,%d:%s', line, line, file)
-           vim.cmd(cmd)
-         end
-      '';
-      options = {
-        desc = "Line history";
       };
     }
     {

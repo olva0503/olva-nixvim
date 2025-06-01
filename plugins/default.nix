@@ -296,6 +296,7 @@
           shfmt.enable = true;
         };
         diagnostics = {
+          codespell.enable = true;
           # buf.enable = true;
           # golangci_lint.enable = true;
         };

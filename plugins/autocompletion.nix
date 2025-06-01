@@ -15,6 +15,13 @@
           ];
 
           providers = {
+            latex = {
+              name = "Latex";
+              module = "blink-cmp-latex";
+              opts = {
+                insert_command = false;
+              };
+            };
             lsp = {
               score_offset = 100;
             };

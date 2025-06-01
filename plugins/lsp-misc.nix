@@ -3,7 +3,7 @@
     lsp-format = {
       enable = true;
       # sql = {
-      #   exclude = ["sqls"];
+        # exclude = ["sqls"];
       # };
     };
     lsp-status.enable = true; #TODO consider using it

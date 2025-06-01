@@ -137,6 +137,23 @@
         # nil-ls = {enable = true;};
         jsonls.enable = true;
         superhtml.enable = true;
+        ltex_plus = {
+          enable = true;
+          package = pkgs.ltex-ls-plus;
+          settings = {
+            ltex = {
+              enable = ["bibtex" "context" "context.tex" "html" "latex" "markdown" "org" "restructuredtext" "rsweave" "java" "go" "rust"];
+              completionEnabled = true;
+              language = "en";
+            };
+            additionalRules = {
+              languageModel = "~/data/ngrams/eng/";
+            };
+          };
+        };
+        harper_ls = {
+          enable = true;
+        };
         gopls = {
           enable = true;
           settings = {
