@@ -495,7 +495,7 @@
     }
     {
       mode = "n";
-      key = "[d";
+      key = "]d";
       action = "<cmd>Lspsaga diagnostic_jump_next<cr>";
       options = {
         desc = "Next diagnostic";
@@ -503,7 +503,7 @@
     }
     {
       mode = "n";
-      key = "]d";
+      key = "[d";
       action = "<cmd>Lspsaga diagnostic_jump_prev<cr>";
       options = {
         desc = "Previous diagnostic";

@@ -124,6 +124,7 @@
       enable = true;
 
       modules = {
+          ai.enable = false;
         indentscope = {
           symbol = "│";
           options = {
