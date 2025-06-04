@@ -23,12 +23,6 @@
       }: let
         nixvim = inputs.nixvim.legacyPackages.${system};
       in {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            just
-          ];
-        };
-
         packages.default = nixvim.makeNixvimWithModule {
           module = {
             imports = [

@@ -154,6 +154,9 @@
         harper_ls = {
           enable = true;
         };
+        vale_ls = {
+            enable = true;
+        };
         gopls = {
           enable = true;
           settings = {

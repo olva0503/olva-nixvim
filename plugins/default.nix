@@ -124,7 +124,7 @@
       enable = true;
 
       modules = {
-          ai.enable = false;
+        ai.enable = false;
         indentscope = {
           symbol = "│";
           options = {
@@ -298,6 +298,7 @@
         };
         diagnostics = {
           codespell.enable = true;
+          write_good.enable = true;
           # buf.enable = true;
           # golangci_lint.enable = true;
         };
