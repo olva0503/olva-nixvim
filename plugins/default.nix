@@ -79,6 +79,8 @@
       };
     };
 
+    lazydev.enable = true;
+    dial.enable = true;
     gitsigns = {
       enable = true;
       settings = {

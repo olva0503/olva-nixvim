@@ -3,6 +3,13 @@
     blink-cmp = {
       enable = true;
       settings = {
+        completion = {
+          ghost_text.enabled = true;
+
+          documentation = {
+            auto_show = true;
+          };
+        };
         sources = {
           default = [
             "lsp"
