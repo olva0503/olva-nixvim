@@ -291,7 +291,6 @@
           };
           goimports.enable = true;
           gofmt.enable = true;
-          htmlbeautifier.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
           sqlfluff.enable = true;

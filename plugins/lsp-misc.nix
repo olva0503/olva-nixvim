@@ -2,8 +2,23 @@
   plugins = {
     lsp-format = {
       enable = true;
+      settings = {
+        html = {
+          sync = true;
+        };
+        nix = {
+          sync = true;
+        };
+        rust = {
+          sync = true;
+        };
+        go = {
+          sync = true;
+        };
+      };
+
       # sql = {
-        # exclude = ["sqls"];
+      # exclude = ["sqls"];
       # };
     };
     lsp-status.enable = true; #TODO consider using it
