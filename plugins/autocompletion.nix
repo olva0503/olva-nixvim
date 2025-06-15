@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   plugins = {
     blink-cmp = {
       enable = true;
@@ -18,18 +18,19 @@
             "snippets"
             "buffer"
             "spell"
+            # "copilot"
             # Make it too slow
             # "dictionary"
           ];
 
           providers = {
-            latex = {
-              name = "Latex";
-              module = "blink-cmp-latex";
-              opts = {
-                insert_command = false;
-              };
-            };
+            # latex = {
+            #   name = "Latex";
+            #   module = "blink-cmp-latex";
+            #   opts = {
+            #     insert_command = false;
+            #   };
+            # };
             lsp = {
               score_offset = 100;
             };
@@ -48,6 +49,12 @@
               # Optional configurations
               opts = {
               };
+            };
+            copilot = {
+              async = true;
+              module = "blink-cmp-copilot";
+              name = "copilot";
+              score_offset = 100;
             };
           };
         };
@@ -102,7 +109,7 @@
 
     blink-cmp-spell.enable = true;
     blink-cmp-dictionary.enable = true;
-
+    blink-cmp-copilot.enable = lib.mkDefault false;
     nvim-autopairs = {
       enable = true;
       settings.fast_wrap.chars = [
