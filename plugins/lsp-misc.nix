@@ -4,15 +4,20 @@
       enable = true;
       settings = {
         html = {
+          exclude = ["harper_ls"];
           sync = true;
         };
         nix = {
+          exclude = ["harper_ls"];
           sync = true;
+          force = true;
         };
         rust = {
+          exclude = ["harper_ls"];
           sync = true;
         };
         go = {
+          exclude = ["harper_ls"];
           sync = true;
         };
       };
