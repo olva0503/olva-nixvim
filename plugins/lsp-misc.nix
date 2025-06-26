@@ -4,20 +4,20 @@
       enable = true;
       settings = {
         html = {
-          exclude = ["harper_ls"];
+          exclude = ["harper_ls" "copilot"];
           sync = true;
         };
         nix = {
-          exclude = ["harper_ls"];
+          exclude = ["harper_ls" "copilot"];
           sync = true;
           force = true;
         };
         rust = {
-          exclude = ["harper_ls"];
+          exclude = ["harper_ls" "copilot"];
           sync = true;
         };
         go = {
-          exclude = ["harper_ls"];
+          exclude = ["harper_ls" "copilot"];
           sync = true;
         };
       };
