@@ -13,8 +13,6 @@
     barbar = {
       enable = true;
       keymaps = {
-        next.key = "]d";
-        previous.key = "[d";
         close = {
           key = "d<TAB>";
           action = "<Cmd>BufferClose!<CR>";

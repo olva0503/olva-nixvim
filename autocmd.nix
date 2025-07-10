@@ -10,6 +10,15 @@
         "*.feature"
       ];
     }
+    {
+      command = "RustFmt";
+      event = [
+        "BufWritePre"
+      ];
+      pattern = [
+        "*.rs"
+      ];
+    }
     # { # too raw
     #   event = [
     #     "LspAttach"

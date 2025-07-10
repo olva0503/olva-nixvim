@@ -509,6 +509,22 @@
         desc = "Previous diagnostic";
       };
     }
+    {
+      mode = "n";
+      key = "]b";
+      action = "<cmd>BufferNext<CR>";
+      options = {
+        desc = "Buffer next";
+      };
+    }
+    {
+      mode = "n";
+      key = "[b";
+      action = "<cmd>BufferPrevious<CR>";
+      options = {
+        desc = "Buffer previous";
+      };
+    }
     #LSP SAGA
   ];
   highlight.Todo = {
