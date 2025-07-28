@@ -216,7 +216,7 @@
     };
 
     flit = {
-      enable = true;
+      enable = false; # temporary disabled due to error
       settings = {
         labeled_modes = "nv";
         multiline = true;

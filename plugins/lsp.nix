@@ -127,13 +127,13 @@
 
       servers = {
         taplo = {
-          enable = true;
+          enable = false;
         };
         cucumber_language_server = {
           enable = true;
           package = null;
         };
-        nixd.enable = true;
+        nixd.enable = false;
         # nil-ls = {enable = true;};
         jsonls.enable = true;
         superhtml.enable = true;
@@ -152,13 +152,13 @@
           };
         };
         harper_ls = {
-          enable = true;
+          enable = false;
         };
         vale_ls = {
-            enable = true;
+          enable = false;
         };
         gopls = {
-          enable = true;
+          enable = false;
           settings = {
             gopls = {
               gofumpt = true;

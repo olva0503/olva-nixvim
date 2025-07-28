@@ -50,6 +50,7 @@
                 ./settings.nix
                 ./plugins
                 ./autocmd.nix
+                ./lsp.nix
               ];
             };
             pkgs = import inputs.nixpkgs {
