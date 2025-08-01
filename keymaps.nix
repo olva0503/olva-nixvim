@@ -525,6 +525,25 @@
         desc = "Buffer previous";
       };
     }
+    {
+      mode = "i";
+      key = "<C-[>";
+      action = "<Esc>";
+      options = {
+        noremap = true;
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "]c";
+      action = "<cmd>GitConflictNextConflict<CR>";
+    }
+    {
+      mode = "n";
+      key = "[c";
+      action = "<cmd>GitConflictPrevConflict<CR>";
+    }
     #LSP SAGA
   ];
   highlight.Todo = {

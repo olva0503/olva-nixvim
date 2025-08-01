@@ -33,7 +33,6 @@
         auto_save = true;
       };
     };
-    noice.enable = false; # think do I really need it
 
     codecompanion = {
       enable = true;
@@ -80,7 +79,6 @@
     };
 
     lazydev.enable = true;
-    dial.enable = true;
     gitsigns = {
       enable = true;
       settings = {
@@ -138,9 +136,6 @@
           mappings = {
             add = "gsa"; # -- Add surrounding in Normal and Visual modes
             delete = "gsd"; # -- Delete surrounding
-            find = "gsf"; # -- Find surrounding (to the right)
-            find_left = "gsF"; # -- Find surrounding (to the left)
-            highlight = "gsh"; # -- Highlight surrounding
             replace = "gsr"; # -- Replace surrounding
             update_n_lines = "gsn"; # -- Update `n_lines`
           };
@@ -251,11 +246,6 @@
           desc = "[S]earch";
         }
       ];
-    };
-
-    yanky = {
-      enable = true;
-      enableTelescope = true;
     };
 
     lint = {
