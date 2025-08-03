@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   plugins = {
     blink-cmp = {
       enable = true;
@@ -50,12 +54,12 @@
               opts = {
               };
             };
-            copilot = {
-              async = true;
-              module = "blink-cmp-copilot";
-              name = "copilot";
-              score_offset = 100;
-            };
+            #   copilot = {
+            #     async = true;
+            #     module = "blink-cmp-copilot";
+            #     name = "copilot";
+            #     score_offset = 100;
+            #   };
           };
         };
         keymap = {
