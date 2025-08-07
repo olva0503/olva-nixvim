@@ -479,7 +479,7 @@
     #LSP SAGA
     {
       mode = ["n" "v"];
-      key = "<leader>ca";
+      key = "gra";
       action = "<cmd>Lspsaga code_action<cr>";
       options = {
         desc = "LSP code action";
@@ -487,7 +487,7 @@
     }
     {
       mode = ["n" "v"];
-      key = "<leader>rn";
+      key = "grn";
       action = "<cmd>Lspsaga rename<cr>";
       options = {
         desc = "LSP rename";

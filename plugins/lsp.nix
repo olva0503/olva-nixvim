@@ -18,7 +18,7 @@
           #  To jump back, press <C-t>.
           {
             mode = "n";
-            key = "gd";
+            key = "grt";
             action.__raw = "require('telescope.builtin').lsp_definitions";
             options = {
               desc = "LSP: [G]oto [D]efinition";
@@ -27,7 +27,7 @@
           # Find references for the word under your cursor.
           {
             mode = "n";
-            key = "gr";
+            key = "grr";
             action.__raw = "require('telescope.builtin').lsp_references";
             options = {
               desc = "LSP: [G]oto [R]eferences";
@@ -37,7 +37,7 @@
           #  Useful when your language has ways of declaring types without an actual implementation.
           {
             mode = "n";
-            key = "gI";
+            key = "gri";
             action.__raw = "require('telescope.builtin').lsp_implementations";
             options = {
               desc = "LSP: [G]oto [I]mplementation";
