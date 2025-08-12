@@ -46,6 +46,7 @@
       harper_ls.enable = true;
       vale_ls.enable = true;
       taplo.enable = true;
+      dockerls.enable = true;
     };
   };
 }

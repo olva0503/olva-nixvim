@@ -48,7 +48,7 @@
           #  the definition of its *type*, not where it was *defined*.
           {
             mode = "n";
-            key = "gD";
+            key = "grT";
             action.__raw = "require('telescope.builtin').lsp_type_definitions";
             options = {
               desc = "LSP: Type [D]efinition";
@@ -58,7 +58,7 @@
           #  Symbols are things like variables, functions, types, etc.
           {
             mode = "n";
-            key = "<leader>lds";
+            key = "<leader>ld";
             action.__raw = "require('telescope.builtin').lsp_document_symbols";
             options = {
               desc = "LSP: [D]ocument [S]ymbols";
@@ -68,7 +68,7 @@
           #  Similar to document symbols, except searches over your entire project.
           {
             mode = "n";
-            key = "<leader>ws";
+            key = "<leader>lw";
             action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
             options = {
               desc = "LSP: [W]orkspace [S]ymbols";
