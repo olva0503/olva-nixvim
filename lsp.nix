@@ -1,6 +1,7 @@
 {
   lsp = {
     servers = {
+      protols.enable = true;
       rust_analayzer = {
         enable = true;
       };

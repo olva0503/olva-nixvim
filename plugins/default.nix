@@ -37,7 +37,7 @@
     codecompanion = {
       enable = true;
       settings = {
-        adapters = {
+        adapters.http = {
           ollama = {
             __raw = ''
               function()

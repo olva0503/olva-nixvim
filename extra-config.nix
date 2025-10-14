@@ -6,7 +6,6 @@
     require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
-    require'lspconfig'.protols.setup{}
 
   '';
   extraPlugins = with pkgs.vimPlugins; [
