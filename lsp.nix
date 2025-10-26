@@ -8,7 +8,7 @@
       elixirls.enable = true;
       gopls = {
         enable = true;
-        settings = {
+        config = {
           gopls = {
             gofumpt = true;
             codelenses = {
