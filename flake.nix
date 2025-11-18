@@ -14,9 +14,8 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = inputs.nixpkgs.lib.systems.flakeExposed;
-
       perSystem = {
+        self',
         pkgs,
         system,
         ...
@@ -33,10 +32,9 @@
               ./autocmd.nix
             ];
           };
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          # pkgs = import inputs.nixpkgs {
+          #   inherit system;
+          # };
         };
       };
       flake = {
@@ -53,10 +51,10 @@
                 ./lsp.nix
               ];
             };
-            pkgs = import inputs.nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            # pkgs = import inputs.nixpkgs {
+            #   inherit system;
+            #   config.allowUnfree = true;
+            # };
           };
       };
     };
