@@ -32,9 +32,6 @@
               ./autocmd.nix
             ];
           };
-          # pkgs = import inputs.nixpkgs {
-          #   inherit system;
-          # };
         };
       };
       flake = {
@@ -51,10 +48,6 @@
                 ./lsp.nix
               ];
             };
-            # pkgs = import inputs.nixpkgs {
-            #   inherit system;
-            #   config.allowUnfree = true;
-            # };
           };
       };
     };

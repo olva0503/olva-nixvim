@@ -13,15 +13,15 @@
     nvim-treesitter-parsers.just
     # NOTE: This is how you would ad a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
     # used for completion, annotations, and signatures of Neovim apis
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "enhanced golang grammar";
-      src = pkgs.fetchFromGitHub {
-        owner = "hexdigest";
-        repo = "go-enhanced-treesitter.nvim";
-        rev = "6fb2f20b70ed2ecdd221f9ca4bfc5084dfae22b0";
-        hash = "sha256-z9hfqqFOSKQW34rvWi+WiyIknxfoQsKssvUn5h66FlI=";
-      };
-    })
+    # (pkgs.vimUtils.buildVimPlugin {
+    #   name = "enhanced golang grammar";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "hexdigest";
+    #     repo = "go-enhanced-treesitter.nvim";
+    #     rev = "6fb2f20b70ed2ecdd221f9ca4bfc5084dfae22b0";
+    #     hash = "sha256-z9hfqqFOSKQW34rvWi+WiyIknxfoQsKssvUn5h66FlI=";
+    #   };
+    # })
   ];
   extraConfigLuaPre =
     # lua

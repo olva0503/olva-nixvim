@@ -544,6 +544,22 @@
       key = "[c";
       action = "<cmd>GitConflictPrevConflict<CR>";
     }
+    {
+      mode = ["n" "x" "o"];
+      key = "s";
+      action = "<Plug>(leap)";
+      options = {
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "S";
+      action = "<Plug>(leap-from-window)";
+      options = {
+        silent = true;
+      };
+    }
     #LSP SAGA
   ];
   highlight.Todo = {
