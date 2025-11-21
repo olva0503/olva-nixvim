@@ -544,23 +544,45 @@
       key = "[c";
       action = "<cmd>GitConflictPrevConflict<CR>";
     }
+    # --- Flash Jump (The main functionality) ---
     {
       mode = ["n" "x" "o"];
       key = "s";
-      action = "<Plug>(leap)";
-      options = {
-        silent = true;
-      };
+      action.__raw = "function() require('flash').jump() end";
+      options = {desc = "Flash";};
     }
+
+    # --- Flash Treesitter (Select text objects) ---
     {
-      mode = "n";
+      mode = ["n" "x" "o"];
       key = "S";
-      action = "<Plug>(leap-from-window)";
-      options = {
-        silent = true;
-      };
+      action.__raw = "function() require('flash').treesitter() end";
+      options = {desc = "Flash Treesitter";};
     }
-    #LSP SAGA
+
+    # --- Flash Remote (Operate on distant text) ---
+    {
+      mode = "o";
+      key = "r";
+      action.__raw = "function() require('flash').remote() end";
+      options = {desc = "Remote Flash";};
+    }
+
+    # --- Flash Treesitter Search (Search within treesitter selection) ---
+    {
+      mode = ["o" "x"];
+      key = "R";
+      action.__raw = "function() require('flash').treesitter_search() end";
+      options = {desc = "Treesitter Search";};
+    }
+
+    # --- Toggle Flash Search (Initialize search with Flash enabled) ---
+    {
+      mode = ["c"];
+      key = "<C-s>";
+      action.__raw = "function() require('flash').toggle() end";
+      options = {desc = "Toggle Flash Search";};
+    }
   ];
   highlight.Todo = {
     fg = "Blue";

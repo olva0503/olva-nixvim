@@ -2,6 +2,7 @@
   lsp = {
     servers = {
       protols.enable = true;
+      helm_ls.enable = true;
       rust_analayzer = {
         enable = true;
       };
@@ -47,6 +48,13 @@
       harper_ls.enable = true;
       vale_ls.enable = true;
       taplo.enable = true;
+      eslint.enable = true;
+      zls.enable = true;
+      lua_ls.enable = false;
+      terraformls.enable = true;
+      yamlls.enable = true;
+      jsonls.enable = true;
+      superhtml.enable = true;
       dockerls.enable = true;
     };
   };

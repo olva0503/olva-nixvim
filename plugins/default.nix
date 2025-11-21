@@ -10,6 +10,7 @@
   ];
 
   plugins = {
+    flash.enable = true;
     barbar = {
       enable = true;
       keymaps = {
@@ -211,18 +212,6 @@
           gitbranch = "FugitiveHead";
         };
       };
-    };
-
-    flit = {
-      enable = true; # temporary disabled due to error
-      settings = {
-        labeled_modes = "nv";
-        multiline = true;
-      };
-    };
-
-    leap = {
-      enable = true;
     };
 
     which-key = {

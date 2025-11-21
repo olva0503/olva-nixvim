@@ -126,13 +126,6 @@
       '';
 
       servers = {
-        cucumber_language_server = {
-          enable = true;
-          package = null;
-        };
-        # nil-ls = {enable = true;};
-        jsonls.enable = true;
-        superhtml.enable = true;
         ltex_plus = {
           enable = true;
           package = pkgs.ltex-ls-plus;
@@ -146,12 +139,6 @@
               languageModel = "~/data/ngrams/eng/";
             };
           };
-        };
-        harper_ls = {
-          enable = false;
-        };
-        vale_ls = {
-          enable = false;
         };
         # bufls.enable = true;
 
@@ -197,11 +184,6 @@
             };
           };
         };
-        eslint.enable = true;
-        zls.enable = true;
-        lua_ls.enable = false;
-        terraformls.enable = true;
-        yamlls.enable = true;
       };
     };
     jdtls = {
