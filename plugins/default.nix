@@ -11,6 +11,7 @@
 
   plugins = {
     flash.enable = true;
+    helm.enable = true;
     barbar = {
       enable = true;
       keymaps = {
