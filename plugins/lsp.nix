@@ -1,6 +1,15 @@
 {pkgs, ...}: {
   plugins = {
     rustaceanvim.enable = true;
+    java = {
+      enable = false;
+      settings = {
+        checks = {
+          nvim_version = false;
+          nvim_jdtls_conflict = false;
+        };
+      };
+    };
     lsp = {
       enable = true;
       inlayHints = false;
@@ -185,10 +194,6 @@
           };
         };
       };
-    };
-    jdtls = {
-      enable = true;
-      # data = "~/.cache/jdtls/workspace";        Please, directly add the necessary `"-data"` flag and its argument to `plugins.jdtls.settings.cmd`
     };
 
     otter = {

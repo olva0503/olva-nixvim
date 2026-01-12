@@ -3,9 +3,9 @@
     servers = {
       protols.enable = true;
       helm_ls.enable = true;
-      rust_analayzer = {
-        enable = true;
-      };
+      # rust_analayzer = {
+      #   enable = true;
+      # };
       elixirls.enable = true;
       gopls = {
         enable = true;
@@ -56,6 +56,14 @@
       jsonls.enable = true;
       superhtml.enable = true;
       dockerls.enable = true;
+      lemminx.enable = true;
+      jdtls = {
+        enable = true;
+        config = {
+          url = "~/.config/java/Default.xml";
+          profile = "custom";
+        };
+      };
     };
   };
 }

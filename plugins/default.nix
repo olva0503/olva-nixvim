@@ -259,7 +259,7 @@
         typescript = ["eslint_d"];
         typescriptreact = ["eslint_d"];
         json = ["jsonlint"];
-        java = ["checkstyle"];
+        # java = ["checkstyle"];
         go = [
           "golangcilint"
         ];
@@ -273,15 +273,14 @@
             enable = true;
           };
           goimports.enable = true;
-          gofmt.enable = true;
           # buf.enable = true;
           gofumpt.enable = true;
           sqlfluff.enable = true;
           stylua.enable = true;
-          shfmt.enable = true;
+          # shfmt.enable = true;
         };
         diagnostics = {
-          codespell.enable = true;
+          codespell.enable = false;
           write_good.enable = true;
           # buf.enable = true;
           # golangci_lint.enable = true;
