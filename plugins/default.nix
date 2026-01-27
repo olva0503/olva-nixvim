@@ -26,7 +26,7 @@
     };
     bufferline.enable = true;
     undotree.enable = true;
-    hardtime.enable = true;
+    hardtime.enable = false;
     auto-session = {
       enable = true;
       settings = {
