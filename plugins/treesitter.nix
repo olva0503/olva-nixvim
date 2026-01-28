@@ -3,7 +3,6 @@
     treesitter = {
       enable = true;
       nixvimInjections = true;
-      grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
       nixGrammars = true;
       settings = {
         highlight.enable = true;
