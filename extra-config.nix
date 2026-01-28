@@ -10,7 +10,6 @@
   '';
   extraPlugins = with pkgs.vimPlugins; [
     vim-just
-    nvim-treesitter-parsers.just
     # NOTE: This is how you would ad a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
     # used for completion, annotations, and signatures of Neovim apis
     # (pkgs.vimUtils.buildVimPlugin {
