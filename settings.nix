@@ -47,4 +47,7 @@
     };
     virtual_text = false;
   };
+  performance = {
+    byteCompileLua.enable = true;
+  };
 }
