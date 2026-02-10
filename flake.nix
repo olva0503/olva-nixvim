@@ -10,21 +10,9 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    flake-parts,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin" # ← added macOS ARM
-      ];
-      perSystem = {
-        system,
-        ...
-      }: let
+  outputs = inputs @ {flake-parts, ...}: let
+    nixvimFlakeModule = {
+      perSystem = {system, ...}: let
         nixvim = inputs.nixvim.legacyPackages.${system};
       in {
         packages.default = nixvim.makeNixvimWithModule {
@@ -40,21 +28,31 @@
           };
         };
       };
-      flake = {
-        lib.makeNixvimWithExtra = system: extraConfig:
-          inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
-            module = {
-              imports = [
-                extraConfig
-                ./keymaps.nix
-                ./extra-config.nix
-                ./settings.nix
-                ./plugins
-                ./autocmd.nix
-                ./lsp.nix
-              ];
-            };
+      flake.lib.makeNixvimWithExtra = system: extraConfig:
+        inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          module = {
+            imports = [
+              extraConfig
+              ./keymaps.nix
+              ./extra-config.nix
+              ./settings.nix
+              ./plugins
+              ./autocmd.nix
+              ./lsp.nix
+            ];
           };
-      };
+        };
+    };
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [nixvimFlakeModule];
+
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin" # ← added macOS ARM
+      ];
+
+      flake.flakeModules.default = nixvimFlakeModule;
     };
 }
