@@ -1,10 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 
@@ -20,8 +22,6 @@
         "aarch64-darwin" # ← added macOS ARM
       ];
       perSystem = {
-        self',
-        pkgs,
         system,
         ...
       }: let
