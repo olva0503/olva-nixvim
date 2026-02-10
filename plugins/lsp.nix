@@ -22,9 +22,6 @@
           };
         };
         extra = [
-          # Jump to the definition of the word under your cusor.
-          #  This is where a variable was first declared, or where a function is defined, etc.
-          #  To jump back, press <C-t>.
           {
             mode = "n";
             key = "grt";
@@ -33,7 +30,6 @@
               desc = "LSP: [G]oto [D]efinition";
             };
           }
-          # Find references for the word under your cursor.
           {
             mode = "n";
             key = "grr";
@@ -42,8 +38,6 @@
               desc = "LSP: [G]oto [R]eferences";
             };
           }
-          # Jump to the implementation of the word under your cursor.
-          #  Useful when your language has ways of declaring types without an actual implementation.
           {
             mode = "n";
             key = "gri";
@@ -52,9 +46,6 @@
               desc = "LSP: [G]oto [I]mplementation";
             };
           }
-          # Jump to the type of the word under your cursor.
-          #  Useful when you're not sure what type a variable is and you want to see
-          #  the definition of its *type*, not where it was *defined*.
           {
             mode = "n";
             key = "grT";
@@ -63,8 +54,6 @@
               desc = "LSP: Type [D]efinition";
             };
           }
-          # Fuzzy find all the symbols in your current document.
-          #  Symbols are things like variables, functions, types, etc.
           {
             mode = "n";
             key = "<leader>ld";
@@ -73,8 +62,6 @@
               desc = "LSP: [D]ocument [S]ymbols";
             };
           }
-          # Fuzzy find all the symbols in your current workspace.
-          #  Similar to document symbols, except searches over your entire project.
           {
             mode = "n";
             key = "<leader>lw";
@@ -86,9 +73,6 @@
         ];
       };
       onAttach = ''
-        -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-        -- to define small helper and utility functions so you don't have to repeat yourself.
-        --
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
@@ -133,67 +117,6 @@
           end, '[T]oggle Inlay [H]ints')
         end
       '';
-
-      servers = {
-        ltex_plus = {
-          enable = true;
-          package = pkgs.ltex-ls-plus;
-          settings = {
-            ltex = {
-              enable = ["bibtex" "context" "context.tex" "html" "latex" "markdown" "org" "restructuredtext" "rsweave" "java" "go" "rust"];
-              completionEnabled = true;
-              language = "en";
-            };
-            additionalRules = {
-              languageModel = "~/data/ngrams/eng/";
-            };
-          };
-        };
-        # bufls.enable = true;
-
-        sqls = {
-          enable = true;
-          settings = {
-            connections = [
-              {
-                driver = "postgresql";
-                dataSourceName = "host=localhost port=5432 user=admin password=admin_password dbname=main_db sslmode=disable";
-              }
-            ];
-          };
-        };
-
-        ts_ls = {
-          enable = true;
-          filetypes = ["javascript" "javascriptreact" "typescript" "typescriptreact"];
-          extraOptions = {
-            settings = {
-              javascript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                };
-              };
-              typescript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                };
-              };
-            };
-          };
-        };
-      };
     };
 
     otter = {

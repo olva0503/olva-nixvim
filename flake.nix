@@ -35,6 +35,7 @@
               ./settings.nix
               ./plugins
               ./autocmd.nix
+              ./lsp.nix
             ];
           };
         };

@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   lsp = {
     servers = {
       protols.enable = true;
@@ -7,6 +7,8 @@
       #   enable = true;
       # };
       elixirls.enable = true;
+      sqls.enable = true;
+      ts_ls.enable = true;
       gopls = {
         enable = true;
         config = {
@@ -49,12 +51,12 @@
       vale_ls.enable = true;
       taplo.enable = true;
       eslint.enable = true;
-      zls.enable = true;
+      zls.enable = false; #TODO enable when bug fixed
       lua_ls.enable = false;
       terraformls.enable = true;
       yamlls.enable = true;
       jsonls.enable = true;
-      superhtml.enable = true;
+      superhtml.enable = false; #TODO enable when bug fixed
       dockerls.enable = true;
       lemminx.enable = true;
       jdtls = {
