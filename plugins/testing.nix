@@ -9,7 +9,7 @@
             dap_go_enabled = true;
           };
         };
-        # java.enable = true;
+        java.enable = true;
         rust = {
           enable = true;
           settings = {
