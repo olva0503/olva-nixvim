@@ -6,9 +6,21 @@
     require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
+    require("nvim-paredit").setup({
+      -- This ensures it attaches to your Lisp-like languages
+      filetypes = { "clojure", "scheme", "lisp", "fennel", "janet" },
 
+      -- nvim-paredit is "silent" by default, so we map the keys here
+      keys = {
+        ["<leader>sl"] = { "slurp_forwards", "Slurp forwards" },
+        ["<leader>ba"] = { "barf_forwards", "Barf forwards" },
+        ["<leader>w"] = { "wrap_around_parens", "Wrap around" },
+        ["<leader>i"] = { "raise_element", "Raise element" },
+      },
+    })
   '';
   extraPlugins = with pkgs.vimPlugins; [
+    nvim-paredit
     # vim-just
     # NOTE: This is how you would ad a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
     # used for completion, annotations, and signatures of Neovim apis
