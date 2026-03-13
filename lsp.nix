@@ -49,6 +49,7 @@
       nixd.enable = true;
       harper_ls.enable = true;
       vale_ls.enable = false;
+      clojure_lsp.enable = true;
       taplo.enable = true;
       eslint.enable = true;
       zls.enable = false; #TODO enable when bug fixed
