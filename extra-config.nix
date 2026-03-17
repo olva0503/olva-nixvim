@@ -6,16 +6,16 @@
     require('dap').listeners.before.event_exited['dapui_config'] = require('dapui').close
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
-    require("nvim-paredit").setup({
+    local paredit = require('nvim-paredit')
+    paredit.setup({
       -- This ensures it attaches to your Lisp-like languages
       filetypes = { "clojure", "scheme", "lisp", "fennel", "janet" },
 
       -- nvim-paredit is "silent" by default, so we map the keys here
       keys = {
-        ["<leader>sl"] = { "slurp_forwards", "Slurp forwards" },
-        ["<leader>ba"] = { "barf_forwards", "Barf forwards" },
-        ["<leader>w"] = { "wrap_around_parens", "Wrap around" },
-        ["<leader>i"] = { "raise_element", "Raise element" },
+        ["<leader>sl"] = { paredit.api.slurp_forwards, "Slurp forwards" },
+        ["<leader>ba"] = { paredit.api.slurp_backwards, "Barf forwards" },
+        ["<leader>i"] = { paredit.api.raise_from, "Raise element" },
       },
     })
   '';

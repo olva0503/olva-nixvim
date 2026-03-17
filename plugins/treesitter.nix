@@ -11,5 +11,6 @@
     };
     treesitter-context.enable = true;
     hmts.enable = false;
+    rainbow-delimiters.enable = true;
   };
 }
