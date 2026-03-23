@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   plugins = {
-    parinfer-rust.enable = true;
     lsp-format = {
       enable = true;
       settings = {
