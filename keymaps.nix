@@ -446,7 +446,7 @@
     {
       mode = "n";
       key = "<leader>gwt";
-      action = "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>";
+      action = "<cmd>Telescope git_worktree git_worktree<cr>";
       options = {
         desc = "Worktree telescope";
       };
@@ -454,7 +454,7 @@
     {
       mode = "n";
       key = "<leader>gwc";
-      action = "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>";
+      action = "<cmd>Telescope git_worktree create_git_worktree<cr>";
       options = {
         desc = "Worktree create";
       };
