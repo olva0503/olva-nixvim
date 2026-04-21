@@ -39,28 +39,11 @@
       };
     }
     {
-      mode = ["n" "t"];
-      key = "<C-n>";
-      action = "<cmd>Lspsaga term_toggle<cr>";
-      options = {
-        silent = true;
-        desc = "Terminal";
-      };
-    }
-    {
       mode = "n";
       key = "<leader>gg";
       action = "<cmd>LazyGit<CR>";
       options = {
         desc = "LazyGit (root dir)";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>fmt";
-      action = "<cmd>!ghokin fmt replace .<CR>";
-      options = {
-        desc = "Reformat";
       };
     }
     {
