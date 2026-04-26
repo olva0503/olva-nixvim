@@ -112,8 +112,6 @@
     };
 
     blink-cmp-spell.enable = true;
-    blink-cmp-dictionary.enable = true;
-    blink-cmp-copilot.enable = lib.mkDefault false;
     nvim-autopairs = {
       enable = true;
       settings.fast_wrap.chars = [

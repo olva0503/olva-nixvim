@@ -21,12 +21,7 @@
           sync = true;
         };
       };
-
-      # sql = {
-      # exclude = ["sqls"];
-      # };
     };
-    lsp-status.enable = true; #TODO consider using it
     lspsaga = {
       enable = true;
       settings = {
