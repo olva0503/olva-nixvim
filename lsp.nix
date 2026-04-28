@@ -15,7 +15,8 @@
           gopls = {
             gofumpt = true;
             codelenses = {
-              gc_details = false;
+              gc_details = true;
+              fieldalignment = true;
               run_govulncheck = true;
               generate = true;
               test = true;
