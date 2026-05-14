@@ -418,6 +418,22 @@
         desc = "Preview hunk";
       };
     }
+    {
+      mode = "n";
+      key = "]h";
+      action = "<cmd>Gitsigns next_hunk<cr>";
+      options = {
+        desc = "Next hunk";
+      };
+    }
+    {
+      mode = "n";
+      key = "[h";
+      action = "<cmd>Gitsigns prev_hunk<cr>";
+      options = {
+        desc = "Previous hunk";
+      };
+    }
     #TODO potentail for removal
     {
       mode = "n";
