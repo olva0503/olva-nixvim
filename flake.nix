@@ -45,6 +45,7 @@
     };
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
+      nixpkgs.config.allowUnfreePredicate = true;
       imports = [nixvimFlakeModule];
 
       systems = [
