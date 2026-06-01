@@ -13,9 +13,14 @@
   outputs = inputs @ {flake-parts, ...}: let
     nixvimFlakeModule = {
       perSystem = {system, ...}: let
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         nixvim = inputs.nixvim.legacyPackages.${system};
       in {
         packages.default = nixvim.makeNixvimWithModule {
+          inherit pkgs;
           module = {
             imports = [
               ./keymaps.nix
@@ -28,8 +33,14 @@
           };
         };
       };
-      flake.lib.makeNixvimWithExtra = system: extraConfig:
+      flake.lib.makeNixvimWithExtra = system: extraConfig: let
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in
         inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit pkgs;
           module = {
             imports = [
               extraConfig
