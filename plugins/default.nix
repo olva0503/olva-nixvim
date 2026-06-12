@@ -71,8 +71,12 @@
     };
 
     web-devicons.enable = true;
-    markdown-preview.enable = true;
-
+    markdown-preview = {
+      enable = true;
+      settings = {
+        theme = "light";
+      };
+    };
     mini = {
       enable = true;
 
