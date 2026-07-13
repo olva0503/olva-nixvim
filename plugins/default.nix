@@ -24,7 +24,6 @@
         };
       };
     };
-    bufferline.enable = true;
     undotree.enable = true;
     hardtime.enable = false;
     auto-session = {
@@ -36,7 +35,6 @@
       };
     };
 
-    lazydev.enable = true;
     gitsigns = {
       enable = true;
       settings = {
@@ -106,9 +104,10 @@
     harpoon = {
       enable = true;
     };
-    indent-blankline = {
-      enable = true;
-    };
+    # looks lite it duplicates mini
+    # indent-blankline = {
+    #   enable = true;
+    # };
     # Inserts matching pairs of parens, brackets, etc.
 
     oil = {
@@ -209,10 +208,6 @@
         proto = ["buf_lint"];
         # nix = ["statix"];
         lua = ["selene"];
-        javascript = ["eslint_d"];
-        javascriptreact = ["eslint_d"];
-        typescript = ["eslint_d"];
-        typescriptreact = ["eslint_d"];
         json = ["jsonlint"];
         # java = ["checkstyle"];
         go = [
@@ -236,7 +231,6 @@
         };
         diagnostics = {
           codespell.enable = false;
-          write_good.enable = true;
           # buf.enable = true;
           # golangci_lint.enable = true;
         };
