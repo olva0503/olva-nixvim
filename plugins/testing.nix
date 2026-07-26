@@ -29,8 +29,6 @@ in {
             args = ["--no-capture"];
           };
         };
-        scala.enable = true;
-        zig.enable = true;
       };
       settings = {
         log_level = "debug";
