@@ -28,6 +28,7 @@
         vimdoc
         xml
         helm
+        http
         yaml
       ];
       nixGrammars = true;
